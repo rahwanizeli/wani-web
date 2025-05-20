@@ -20,14 +20,12 @@
       background-repeat: no-repeat;
     }
 
-    /* Header */
     #header img {
       width: 100%;
       height: auto;
       display: block;
     }
 
-    /* Navbar */
     .navbar {
       display: flex;
       flex-wrap: wrap;
@@ -47,7 +45,7 @@
       font-family: inherit;
     }
 
-    .navbar a:hover, .subnav:hover .subnavbtn {
+    .navbar a:hover, .subnavbtn:hover {
       background-color: #e5ada8;
     }
 
@@ -76,11 +74,10 @@
       color: black;
     }
 
-    .subnav:hover .subnav-content {
+    .subnav.open .subnav-content {
       display: block;
     }
 
-    /* Main content */
     #Home h1 {
       font-family: 'Lucida Handwriting', cursive;
       text-align: center;
@@ -90,7 +87,6 @@
       font-size: 6vw;
     }
 
-    /* Video */
     video {
       width: 100%;
       height: auto;
@@ -98,7 +94,6 @@
       margin: 0 auto;
     }
 
-    /* Footer */
     #footer {
       background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
@@ -116,7 +111,6 @@
       margin-top: 10px;
     }
 
-    /* Responsive Design */
     @media screen and (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -156,6 +150,7 @@
   <!-- Navbar -->
   <div class="navbar">
     <a href="index.html">Home</a>
+
     <div class="subnav">
       <button class="subnavbtn">Me <i class="fa fa-caret-down"></i></button>
       <div class="subnav-content">
@@ -164,6 +159,7 @@
         <a href="interest.html">Interest</a>
       </div>
     </div> 
+
     <div class="subnav">
       <button class="subnavbtn">SocMeds <i class="fa fa-caret-down"></i></button>
       <div class="subnav-content">
@@ -172,6 +168,7 @@
         <a href="https://www.tiktok.com/@rhwany_?_t=ZS-8wOrFfT8ud6">TikTok</a>
       </div>
     </div>
+
     <a href="contact.html">Contact</a>
     <a href="gallery.html">Gallery</a>
   </div>
@@ -193,8 +190,8 @@
     <div id="clock"></div>
   </div>
 
-  <!-- Clock Script -->
-  <script type="text/javascript">
+  <!-- Scripts -->
+  <script>
     function updateClock() {
       const now = new Date();
       const hours = now.getHours().toString().padStart(2, '0');
@@ -205,6 +202,24 @@
     }
     setInterval(updateClock, 1000);
     updateClock();
+
+    // Toggle submenus on click
+    document.querySelectorAll('.subnavbtn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const subnav = this.parentElement;
+        document.querySelectorAll('.subnav').forEach(s => {
+          if (s !== subnav) s.classList.remove('open');
+        });
+        subnav.classList.toggle('open');
+      });
+    });
+
+    // Optional: Close submenu if clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.subnav')) {
+        document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+      }
+    });
   </script>
 
 </body>
