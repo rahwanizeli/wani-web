@@ -13,9 +13,19 @@ body, html{
   font-family: bermuda;
 }
 
+@media screen and (max-width: 600px) {
+  .navbar a, .subnav .subnavbtn {
+    float: none;
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    padding: 15px;
+  }
+
 .navbar {
   overflow: hidden;
-  background-color: #df6175; 
+  background-color: #df6175;
+  text-align: center;
 }
 
 .navbar a {
@@ -40,7 +50,7 @@ body, html{
   color: white;
   padding: 30px 30px;
   background-color: inherit;
-  font-family: bermuda;
+  font-family: 'bermuda', Arial, sans-serif;
   margin: 0;
 }
 
@@ -50,7 +60,7 @@ body, html{
 
 .subnav-content {
   display: none;
-  position: absolute;
+  position: relative;
   left: 0;
   background-color: #e5ada8;
   width: 100%;
@@ -113,12 +123,12 @@ background-image: url('gambau/batik.jpeg');
 
 body {
   margin: 0;
-  font-family: Papyrus;
+  font-family:'Papyrus', cursive, sans-serif;
 }
 
 .header {
   text-align: center;
-  font-family: courier new;
+  font-family: 'courier new', Courier, monospace;
   font-size: 30px;
   background-color: #b3405a;
   color: white;
@@ -164,12 +174,34 @@ body {
     max-width: 100%;
   }
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 6vw;
+}
+
+.header {
+  font-size: 5vw;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .header, .overlay, p {
+    padding: 10px;
+  }
+}
+
+
 </style>
 </head>
 <body>
 	<!-- Header -->
 	<div id="header">
-		<img src="gambau/banner.png" alt="Banner" width= "1340" height="240" />
+		<img src="gambau/banner.png" alt="Banner" style="width: 100%; height:auto;" />
 	</div>
 
 <div class="navbar">
@@ -225,7 +257,7 @@ body {
   </div>
 </div>
 
-  <div class"column">
+  <div class="column">
   <div class="container">
     <img src="gambau/hiking.jpg" style="width:100%">
     <div class="overlay">Hiking</div>
