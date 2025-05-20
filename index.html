@@ -33,16 +33,16 @@
       background-color: #df6175;
     }
 
-    .navbar a, .subnavbtn {
+    .navbar a,
+    .subnav .subnavbtn {
       font-size: 20px;
       color: white;
-      padding: 14px 16px;
       text-align: center;
+      padding: 14px 16px;
       text-decoration: none;
-      background: none;
+      background-color: inherit;
       border: none;
       cursor: pointer;
-      font-family: inherit;
     }
 
     .navbar a:hover, .subnavbtn:hover {
@@ -65,8 +65,6 @@
       color: white;
       padding: 12px 16px;
       display: block;
-      text-align: left;
-      text-decoration: none;
     }
 
     .subnav-content a:hover {
@@ -114,14 +112,12 @@
     @media screen and (max-width: 768px) {
       .navbar {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
       }
 
-      .navbar a, .subnavbtn {
-        width: 100%;
-        text-align: left;
-        font-size: 18px;
-        padding: 14px;
+      .navbar a, .subnav .subnavbtn {
+        font-size: 16px;
+        padding: 10px;
       }
 
       .subnav-content {
