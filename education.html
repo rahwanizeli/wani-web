@@ -6,6 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+* {
+box-sizing: border-box;
+}
+  
 body, html {
   height: 100%;
   margin: 0;
@@ -13,53 +17,68 @@ body, html {
 }
 
 body {
+  margin: 0;
+  font-family: bermuda, sans-serif;
   background-image: url('gambau/batik.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Navbar */
 .navbar {
-  overflow-x: auto;
-  background-color: #df6175; 
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #df6175;
+  justify-content: center;
 }
 
 .navbar a, .subnav .subnavbtn {
-  display: inline-block;
   font-size: 20px;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 14px 16px;
   text-decoration: none;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
 }
 
+.navbar a:hover,
+.subnav:hover .subnavbtn {
+   background-color: #e5ada8;
+}
+  
 .subnav {
-  display: inline-block;
+  position: relative;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
-  left: 0;
   background-color: #e5ada8;
-  width: 100%;
+  min-width: 160%;
   z-index: 1;
 }
 
 .subnav-content a {
   color: white;
-  padding: 14px 16px;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #e5ada8;
-}
-
-.subnav:hover .subnav-content {
+  padding: 12px 16px;
   display: block;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav.open .subnav-content {
+  display: block;
+}
+
+.subnav-content {
+  top: 100%;
+  left: 0;
 }
 
 /* Flip container */
@@ -142,9 +161,15 @@ body {
 
 /* Responsive adjustments */
 @media only screen and (max-width: 600px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .navbar a, .subnav .subnavbtn {
     font-size: 16px;
-    padding: 12px;
+    padding: 10px;
   }
 
   .flip-box {
@@ -258,18 +283,34 @@ body {
   <div id="clock"></div>
 </div>
 
-<script>
-function updateClock() {
-  const now = new Date();
-  let h = now.getHours();
-  let m = now.getMinutes();
-  let s = now.getSeconds();
-  if (m < 10) m = "0" + m;
-  if (s < 10) s = "0" + s;
-  document.getElementById("clock").innerText = `Current Time: ${h}:${m}:${s}`;
-}
-setInterval(updateClock, 1000);
-updateClock();
+ <script>
+  // Clock Function
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('clock').textContent = `Current Time: ${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Toggle Submenu on Click
+  document.querySelectorAll('.subnavbtn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation(); // Prevent bubbling to document
+      const parent = this.parentElement;
+      const alreadyOpen = parent.classList.contains('open');
+
+      document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+      if (!alreadyOpen) parent.classList.add('open');
+    });
+  });
+
+  // Close submenus if clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+  });
 </script>
 
 </body>
