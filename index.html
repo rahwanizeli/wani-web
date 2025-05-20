@@ -11,32 +11,44 @@
     }
 
     body, html {
-      height: 100%;
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: 'Bermuda', Arial, sans-serif;
       background-image: url('gambau/batik.jpeg');
       background-size: cover;
       background-repeat: no-repeat;
     }
 
+    /* Header */
+    #header img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Navbar */
     .navbar {
-      overflow: hidden;
-      background-color: #df6175;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      background-color: #df6175;
     }
 
-    .navbar a, .subnav .subnavbtn {
+    .navbar a, .subnavbtn {
       font-size: 20px;
       color: white;
-      text-align: center;
       padding: 14px 16px;
+      text-align: center;
       text-decoration: none;
       background: none;
       border: none;
       cursor: pointer;
       font-family: inherit;
+    }
+
+    .navbar a:hover, .subnav:hover .subnavbtn {
+      background-color: #e5ada8;
     }
 
     .subnav {
@@ -47,16 +59,15 @@
       display: none;
       position: absolute;
       background-color: #e5ada8;
-      width: 100%;
-      left: 0;
+      min-width: 160px;
       z-index: 1;
-      text-align: left;
     }
 
     .subnav-content a {
-      display: block;
-      padding: 12px;
       color: white;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
       text-decoration: none;
     }
 
@@ -65,20 +76,11 @@
       color: black;
     }
 
-    .navbar a:hover, .subnav:hover .subnavbtn {
-      background-color: #e5ada8;
-    }
-
     .subnav:hover .subnav-content {
       display: block;
     }
 
-    #header img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
+    /* Main content */
     #Home h1 {
       font-family: 'Lucida Handwriting', cursive;
       text-align: center;
@@ -88,6 +90,7 @@
       font-size: 6vw;
     }
 
+    /* Video */
     video {
       width: 100%;
       height: auto;
@@ -95,6 +98,7 @@
       margin: 0 auto;
     }
 
+    /* Footer */
     #footer {
       background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
@@ -103,39 +107,41 @@
 
     #footer p {
       font-family: sans-serif;
-      font-size: 18px;
+      font-size: 16px;
       margin: 10px 0;
     }
 
     #clock {
-      font-size: 30px;
+      font-size: 24px;
       margin-top: 10px;
     }
 
-    /* Responsive Navbar */
-    @media screen and (max-width: 600px) {
-      .navbar, .subnav, .subnav-content {
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .navbar {
         flex-direction: column;
-        width: 100%;
+        align-items: stretch;
       }
 
-      .navbar a, .subnav .subnavbtn {
+      .navbar a, .subnavbtn {
         width: 100%;
         text-align: left;
         font-size: 18px;
-        padding: 12px;
+        padding: 14px;
       }
 
       .subnav-content {
         position: relative;
+        width: 100%;
       }
 
       #Home h1 {
         font-size: 8vw;
+        padding: 15px;
       }
 
       #clock {
-        font-size: 24px;
+        font-size: 20px;
       }
     }
   </style>
@@ -144,7 +150,7 @@
 
   <!-- Header -->
   <div id="header">
-    <img src="gambau/banner.png" alt="Banner">
+    <img src="gambau/banner.png" alt="Rahwani Website Banner">
   </div>
 
   <!-- Navbar -->
@@ -187,16 +193,15 @@
     <div id="clock"></div>
   </div>
 
+  <!-- Clock Script -->
   <script type="text/javascript">
     function updateClock() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      var seconds = now.getSeconds();
-      if (minutes < 10) minutes = "0" + minutes;
-      if (seconds < 10) seconds = "0" + seconds;
-      var timeString = hours + ":" + minutes + ":" + seconds;
-      document.getElementById('clock').innerHTML = "Current Time: " + timeString;
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = "Current Time: " + timeString;
     }
     setInterval(updateClock, 1000);
     updateClock();
