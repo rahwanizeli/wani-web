@@ -11,6 +11,12 @@
 }
 
 body, html {
+  height: 100%;
+  margin: 0;
+  font-family: bermuda;
+}
+
+body {
   margin: 0;
   font-family: bermuda, sans-serif;
   background-image: url('gambau/batik.jpeg');
@@ -55,7 +61,9 @@ body, html {
   min-width: 160px;
   z-index: 1;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 .subnav-content a {
@@ -71,6 +79,11 @@ body, html {
 
 .subnav.open .subnav-content {
   display: block;
+}
+
+.subnav-content {
+  top: 100%;
+  left: 0;
 }
 
 /* Responsive Navbar */
@@ -250,7 +263,7 @@ img {
 </div>
 
 <!-- JS Clock & Dropdown Toggle -->
- <script>
+  <script>
   // Clock Function
   function updateClock() {
     const now = new Date();
@@ -279,5 +292,6 @@ img {
     document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
   });
 </script>
+
 </body>
 </html>
