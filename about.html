@@ -67,8 +67,13 @@
       color: black;
     }
 
-    .subnav:hover .subnav-content {
+    .subnav.open .subnav-content {
       display: block;
+    }
+
+    .subnav-content {
+      top: 100%;
+      left: 0;
     }
 
     img {
@@ -218,21 +223,35 @@
     <div id="clock"></div>
   </div>
 
-  <!-- Clock Script -->
-  <script type="text/javascript">
-    function updateClock() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      var seconds = now.getSeconds();
-      if (minutes < 10) { minutes = "0" + minutes; }
-      if (seconds < 10) { seconds = "0" + seconds; }
-      var timeString = hours + ":" + minutes + ":" + seconds;
-      document.getElementById('clock').innerHTML = "Current Time: " + timeString;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
+ <script>
+  // Clock Function
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('clock').textContent = `Current Time: ${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Toggle Submenu on Click
+  document.querySelectorAll('.subnavbtn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation(); // Prevent bubbling to document
+      const parent = this.parentElement;
+      const alreadyOpen = parent.classList.contains('open');
+
+      document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+      if (!alreadyOpen) parent.classList.add('open');
+    });
+  });
+
+  // Close submenus if clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+  });
+</script>
 
 </body>
 </html>
