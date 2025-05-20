@@ -6,10 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body {
-  background-image: url('gambau/batik.jpeg');
+* {
+box-sizing: border-box;
+}
+  
+body, html {
+  height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: bermuda;
+}
+  
+body {
+  margin: 0;
+  font-family: bermuda, sans-serif;
+  background-image: url('gambau/batik.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #header img {
@@ -20,10 +33,9 @@ body {
 }
 
 .navbar {
-  overflow: hidden;
-  background-color: #df6175;
   display: flex;
   flex-wrap: wrap;
+  background-color: #df6175;
   justify-content: center;
 }
 
@@ -31,7 +43,7 @@ body {
   font-size: 20px;
   color: white;
   text-align: center;
-  padding: 15px 20px;
+  padding: 14px 16px;
   text-decoration: none;
   background-color: inherit;
   border: none;
@@ -40,32 +52,42 @@ body {
 
 .subnav {
   position: relative;
-  display: inline-block;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
-  left: 0;
   background-color: #e5ada8;
-  width: 100%;
+  min-width: 160px;
   z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  top: 100%;
 }
 
 .subnav-content a {
   color: white;
-  padding: 10px;
-  text-decoration: none;
+  padding: 12px 16px;
   display: block;
-  text-align: left;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
   background-color: #e5ada8;
 }
 
-.subnav:hover .subnav-content {
+.subnav.open .subnav-content {
   display: block;
+}
+
+.subnav-content {
+  top: 100%;
+  left: 0;
 }
 
 h2, p {
@@ -122,10 +144,14 @@ th, td {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
   .navbar a, .subnav .subnavbtn {
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 10px;
   }
 
   th, td {
@@ -198,20 +224,36 @@ th, td {
   <div id="clock"></div>
 </div>
 
-<script>
-function updateClock() {
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
-  if (minutes < 10) { minutes = "0" + minutes; }
-  if (seconds < 10) { seconds = "0" + seconds; }
-  var timeString = hours + ":" + minutes + ":" + seconds;
-  document.getElementById('clock').innerHTML = "Current Time: " + timeString;
-}
-setInterval(updateClock, 1000);
-updateClock();
+ <script>
+  // Clock Function
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('clock').textContent = `Current Time: ${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Toggle Submenu on Click
+  document.querySelectorAll('.subnavbtn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation(); // Prevent bubbling to document
+      const parent = this.parentElement;
+      const alreadyOpen = parent.classList.contains('open');
+
+      document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+      if (!alreadyOpen) parent.classList.add('open');
+    });
+  });
+
+  // Close submenus if clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.subnav').forEach(s => s.classList.remove('open'));
+  });
 </script>
+
 
 </body>
 </html>
