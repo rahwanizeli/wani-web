@@ -1,141 +1,206 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Rhwanyrzl</title>
-<link rel="icon" type="icon" href="gambau/favicon.ico">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+  <title>Rhwanyrzl</title>
+  <link rel="icon" type="image/x-icon" href="gambau/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body, html{
-  height: 100%;
-  margin: 0;
-  font-family: bermuda;
-}
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Bermuda', Arial, sans-serif;
+      background-image: url('gambau/batik.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
-.navbar {
-  overflow: hidden;
-  background-color: #df6175; 
-}
+    .navbar {
+      overflow: hidden;
+      background-color: #df6175;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.navbar a {
-  float: left;
-  font-size: 30px;
-  color: white;
-  text-align: center;
-  padding: 30px 30px;
-  text-decoration: none;
-}
+    .navbar a, .subnav .subnavbtn {
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
 
-.subnav {
-  float: left;
-  overflow: hidden;
-}
+    .subnav {
+      position: relative;
+    }
 
-.subnav .subnavbtn {
-  font-size: 30px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 30px 30px;
-  background-color: inherit;
-  font-family: bermuda;
-  margin: 0;
-}
+    .subnav-content {
+      display: none;
+      position: absolute;
+      background-color: #e5ada8;
+      width: 100%;
+      left: 0;
+      z-index: 1;
+      text-align: left;
+    }
 
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #e5ada8;
-}
+    .subnav-content a {
+      display: block;
+      padding: 12px;
+      color: white;
+      text-decoration: none;
+    }
 
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: #e5ada8;
-  width: 100%;
-  z-index: 1;
-}
+    .subnav-content a:hover {
+      background-color: #eee;
+      color: black;
+    }
 
-.subnav-content a {
-  float: left;
-  color: white;
-  text-decoration: none;
-}
+    .navbar a:hover, .subnav:hover .subnavbtn {
+      background-color: #e5ada8;
+    }
 
-.subnav-content a:hover {
-  background-color: #eee;
-  color: black;
-}
+    .subnav:hover .subnav-content {
+      display: block;
+    }
 
-.subnav:hover .subnav-content {
-  display: block;
-}
+    #header img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-body {
-background-image: url('gambau/batik.jpeg');
-}
+    #Home h1 {
+      font-family: 'Lucida Handwriting', cursive;
+      text-align: center;
+      color: black;
+      background-color: #f1ece2;
+      padding: 20px;
+      font-size: 6vw;
+    }
 
-</style>
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #footer {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      text-align: center;
+    }
+
+    #footer p {
+      font-family: sans-serif;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    #clock {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+
+    /* Responsive Navbar */
+    @media screen and (max-width: 600px) {
+      .navbar, .subnav, .subnav-content {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .navbar a, .subnav .subnavbtn {
+        width: 100%;
+        text-align: left;
+        font-size: 18px;
+        padding: 12px;
+      }
+
+      .subnav-content {
+        position: relative;
+      }
+
+      #Home h1 {
+        font-size: 8vw;
+      }
+
+      #clock {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-	<!-- Header -->
-	<div id="header">
-		<img src="gambau/banner.png" alt="Banner" style="width: 100%; height: auto;">
-	</div>
 
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <div class="subnav">
-    <button class="subnavbtn">Me <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="about.html">About</a>
-      <a href="education.html">Education</a>
-      <a href="interest.html">Interest</a>
-    </div>
-  </div> 
-  <div class="subnav">
-    <button class="subnavbtn">SocMeds <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="https://www.instagram.com/rhwnyrzl/">Intagram</a>
-      <a href="https://x.com/rhwanyrz1?s=11">X</a>
-      <a href="https://www.tiktok.com/@rhwany_?_t=ZS-8wOrFfT8ud6">TikTok</a>
-    </div>
+  <!-- Header -->
+  <div id="header">
+    <img src="gambau/banner.png" alt="Banner">
   </div>
-  <a href="contact.html">Contact</a>
-  <a href="gallery.html">Gallery</a>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="subnav">
+      <button class="subnavbtn">Me <i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+        <a href="about.html">About</a>
+        <a href="education.html">Education</a>
+        <a href="interest.html">Interest</a>
+      </div>
+    </div> 
+    <div class="subnav">
+      <button class="subnavbtn">SocMeds <i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+        <a href="https://www.instagram.com/rhwnyrzl/">Instagram</a>
+        <a href="https://x.com/rhwanyrz1?s=11">X</a>
+        <a href="https://www.tiktok.com/@rhwany_?_t=ZS-8wOrFfT8ud6">TikTok</a>
+      </div>
     </div>
+    <a href="contact.html">Contact</a>
+    <a href="gallery.html">Gallery</a>
+  </div>
 
-<div id="Home" class="navcontent">
-  <h1 style="font-family:lucida handwriting; text-align:center; color:black; background-color:#f1ece2;"> Welcome to Rahwani's site!</h2>
-</div>
+  <!-- Main Content -->
+  <div id="Home" class="navcontent">
+    <h1>Welcome to Rahwani's site!</h1>
+  </div>
 
-<video width="1350" height="450" loop controls>
-  <source src="gambau/intro.mp4" type="video/mp4">
-</video>
+  <!-- Video Section -->
+  <video loop controls>
+    <source src="gambau/intro.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-	<!-- Disclaimer -->
+  <!-- Footer -->
   <div id="footer">
-  <p style="font family: sans serif; text-align:center; font-size:30px;">&copy; 2025 RAHWANI. Recommended browser: Chrome, resolution 1920x1080. Last updated: May 21, 2025.</p>
+    <p>&copy; 2025 RAHWANI. Recommended browser: Chrome, resolution 1920x1080. Last updated: May 21, 2025.</p>
+    <div id="clock"></div>
+  </div>
 
-<div id="clock" style="text-align:center; font-size:40px; margin-top:10px;"></div>
-
-<script type="text/javascript">
-function updateClock() {
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
-  if (minutes < 10) { minutes = "0" + minutes; }
-  if (seconds < 10) { seconds = "0" + seconds; }
-  var timeString = hours + ":" + minutes + ":" + seconds;
-  document.getElementById('clock').innerHTML = "Current Time: " + timeString;
-}
-setInterval(updateClock, 1000);
-updateClock();
-</script>
-
-
-</div>
+  <script type="text/javascript">
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      if (minutes < 10) minutes = "0" + minutes;
+      if (seconds < 10) seconds = "0" + seconds;
+      var timeString = hours + ":" + minutes + ":" + seconds;
+      document.getElementById('clock').innerHTML = "Current Time: " + timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 
 </body>
 </html>
