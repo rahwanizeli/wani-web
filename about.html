@@ -9,6 +9,8 @@
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
@@ -17,25 +19,26 @@
       background-image: url('gambau/batik.jpeg');
       background-size: cover;
       background-repeat: no-repeat;
+      background-position: center;
     }
 
     .navbar {
       display: flex;
       flex-wrap: wrap;
       background-color: #df6175;
+      justify-content: center;
     }
 
-    .navbar a,
+      .navbar a,
     .subnav .subnavbtn {
-      flex: 1;
-      font-size: 18px;
+      font-size: 20px;
       color: white;
       text-align: center;
-      padding: 15px;
+      padding: 14px 16px;
       text-decoration: none;
       background-color: inherit;
       border: none;
-      outline: none;
+      cursor: pointer;
     }
 
     .navbar a:hover,
@@ -51,16 +54,14 @@
       display: none;
       position: absolute;
       background-color: #e5ada8;
-      width: 100%;
+      min-width: 160px;
       z-index: 1;
     }
 
     .subnav-content a {
       color: white;
-      padding: 12px;
-      text-decoration: none;
+      padding: 12px 16px;
       display: block;
-      text-align: left;
     }
 
     .subnav-content a:hover {
@@ -132,11 +133,15 @@
       margin-top: 10px;
     }
 
-    @media screen and (max-width: 600px) {
+     @media screen and (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .navbar a, .subnav .subnavbtn {
-        flex: 100%;
         font-size: 16px;
-        padding: 12px;
+        padding: 10px;
       }
 
       h2 {
