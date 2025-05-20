@@ -11,38 +11,31 @@ body, html {
   margin: 0;
   font-family: bermuda;
 }
-.navbar {
-  overflow: hidden;
-  background-color: #df6175; 
+
+body {
+  background-image: url('gambau/batik.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.navbar a {
-  float: left;
-  font-size: 30px;
+/* Navbar */
+.navbar {
+  overflow-x: auto;
+  background-color: #df6175; 
+  white-space: nowrap;
+}
+
+.navbar a, .subnav .subnavbtn {
+  display: inline-block;
+  font-size: 20px;
   color: white;
   text-align: center;
-  padding: 30px 30px;
+  padding: 20px;
   text-decoration: none;
 }
 
 .subnav {
-  float: left;
-  overflow: hidden;
-}
-
-.subnav .subnavbtn {
-  font-size: 30px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 30px 30px;
-  background-color: inherit;
-  font-family: bermuda;
-  margin: 0;
-}
-
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #e5ada8;
+  display: inline-block;
 }
 
 .subnav-content {
@@ -55,31 +48,33 @@ body, html {
 }
 
 .subnav-content a {
-  float: left;
   color: white;
+  padding: 14px 16px;
+  display: inline-block;
   text-decoration: none;
 }
 
-.subnav-content a:hover {
-  background-color: #eee;
-  color: black;
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #e5ada8;
 }
 
 .subnav:hover .subnav-content {
   display: block;
 }
 
+/* Flip container */
 .flip-container {
   display: grid;
-  grid-template-collumns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+  padding: 20px;
   justify-items: center;
-  margin: 20px;
 }
 
 .flip-box {
   background-color: #9f7359;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 400px;
   border: 1px solid #f1f1f1;
   perspective: 1000px;
@@ -102,8 +97,8 @@ body, html {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .flip-box-front {
@@ -112,24 +107,64 @@ body, html {
   color: black;
 }
 
-.flip-box-back {
-  background-color: #6594b4;
-  font-size: 30px;
-  color: white;
-  transform: rotateY(180deg);
+.flip-box-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-body {
-background-image: url('gambau/batik.jpeg');
+.flip-box-back {
+  background-color: #6594b4;
+  font-size: 20px;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Footer */
+#footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+#footer p {
+  font-family: sans-serif;
+  font-size: 18px;
+  margin: 0;
+}
+
+#clock {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .navbar a, .subnav .subnavbtn {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .flip-box {
+    height: 300px;
+  }
+
+  .flip-box-back {
+    font-size: 16px;
+  }
 }
 </style>
 </head>
 <body>
-	<!-- Header -->
-	<div id="header">
-		<img src="gambau/banner.png" alt="Banner" width= "1340" height="240" />
-	</div>
 
+<!-- Header -->
+<div id="header">
+  <img src="gambau/banner.png" alt="Banner" style="width:100%; max-width: 100%;">
+</div>
+
+<!-- Navbar -->
 <div class="navbar">
   <a href="index.html">Home</a>
   <div class="subnav">
@@ -139,29 +174,29 @@ background-image: url('gambau/batik.jpeg');
       <a href="education.html">Education</a>
       <a href="interest.html">Interest</a>
     </div>
-  </div> 
+  </div>
   <div class="subnav">
     <button class="subnavbtn">SocMeds <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="https://www.instagram.com/rhwnyrzl/">Intagram</a>
+      <a href="https://www.instagram.com/rhwnyrzl/">Instagram</a>
       <a href="https://x.com/rhwanyrz1?s=11">X</a>
       <a href="https://www.tiktok.com/@rhwany_?_t=ZS-8wOrFfT8ud6">TikTok</a>
     </div>
   </div>
   <a href="contact.html">Contact</a>
   <a href="gallery.html">Gallery</a>
-    </div>
+</div>
 
+<!-- Flip Boxes -->
 <div class="flip-container">
-  <!-- Flip Box 1 -->
+
   <div class="flip-box">
     <div class="flip-box-inner">
       <div class="flip-box-front">
-        <img src="gambau/skrumbia.jpeg" alt="Primary" style="width:500px;height:400px;">
+        <img src="gambau/skrumbia.jpeg" alt="Primary School">
       </div>
       <div class="flip-box-back">
-        <h1>SK Rumbia</h1>
-        <h2>My Primary School</h2>
+        <h2>SK Rumbia</h2>
         <ul>
           <li>8As in UPKK</li>
           <li>3As in UPSR</li>
@@ -170,15 +205,13 @@ background-image: url('gambau/batik.jpeg');
     </div>
   </div>
 
-  <!-- Flip Box 2 -->
   <div class="flip-box">
     <div class="flip-box-inner">
       <div class="flip-box-front">
-        <img src="gambau/smkbrass.jpg" alt="Highschool" style="width:500px;height:400px;">
+        <img src="gambau/smkbrass.jpg" alt="Highschool">
       </div>
       <div class="flip-box-back">
-        <h1>SMK Bukit Rambai</h1>
-        <h2>My First Highschool</h2>
+        <h2>SMK Bukit Rambai</h2>
         <ul>
           <li>Took Islamic Stream</li>
           <li>2018-2019</li>
@@ -187,64 +220,57 @@ background-image: url('gambau/batik.jpeg');
     </div>
   </div>
 
-  <!-- Flip Box 3 -->
   <div class="flip-box">
     <div class="flip-box-inner">
       <div class="flip-box-front">
-        <img src="gambau/smkdolsaid.jpg" alt="Highschool" style="width:500px;height:400px;">
+        <img src="gambau/smkdolsaid.jpg" alt="Second Highschool">
       </div>
       <div class="flip-box-back">
-        <h1>SMK Dato' Dol Said</h1>
-        <h2>My Second Highschool</h2>
+        <h2>SMK Dato' Dol Said</h2>
         <ul>
-          <li>Took Economy & Art as elective (2019–2022)</li>
+          <li>Economy & Art Elective</li>
           <li>6As in SPM</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Flip Box 4 -->
   <div class="flip-box">
     <div class="flip-box-inner">
       <div class="flip-box-front">
-        <img src="gambau/uitmkedah.jpg" alt="Diploma" style="width:500px;height:400px;">
+        <img src="gambau/uitmkedah.jpg" alt="Diploma">
       </div>
       <div class="flip-box-back">
-        <h1>UiTM Kedah</h1>
-        <h2>Diploma</h2>
+        <h2>UiTM Kedah</h2>
         <ul>
-          <li>In field of Information Science</li>
+          <li>Information Science Diploma</li>
           <li>2023–2026</li>
         </ul>
       </div>
     </div>
   </div>
+
 </div>
 
-	<!-- Disclaimer -->
-  <div id="footer">
-  <p style="font family: sans serif; text-align:center; font-size:30px;">&copy; 2025 RAHWANI. Recommended browser: Chrome, resolution 1920x1080. Last updated: May 21, 2025.</p>
+<!-- Footer -->
+<div id="footer">
+  <p>&copy; 2025 RAHWANI. Recommended browser: Chrome. Last updated: May 21, 2025.</p>
+  <div id="clock"></div>
+</div>
 
-<div id="clock" style="text-align:center; font-size:40px; margin-top:10px;"></div>
-
-<script type="text/javascript">
+<script>
 function updateClock() {
-  var now = new Date();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
-  if (minutes < 10) { minutes = "0" + minutes; }
-  if (seconds < 10) { seconds = "0" + seconds; }
-  var timeString = hours + ":" + minutes + ":" + seconds;
-  document.getElementById('clock').innerHTML = "Current Time: " + timeString;
+  const now = new Date();
+  let h = now.getHours();
+  let m = now.getMinutes();
+  let s = now.getSeconds();
+  if (m < 10) m = "0" + m;
+  if (s < 10) s = "0" + s;
+  document.getElementById("clock").innerText = `Current Time: ${h}:${m}:${s}`;
 }
 setInterval(updateClock, 1000);
 updateClock();
 </script>
-
-
-</div>
 
 </body>
 </html>
